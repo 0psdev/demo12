@@ -4,7 +4,7 @@ image:
   repository: ops2dev/demo11
   tag: "1.0"
 
-containerPort: 8080
+containerPort: 80
 
 envVarName: "dev-env"
 state: "dev"
