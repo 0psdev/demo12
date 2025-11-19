@@ -1,6 +1,6 @@
 apiVersion: v2
-name: demo11
-description: A Helm chart for demo11
+name: demo12
+description: A Helm chart for demo12
 
 # A chart can be either an 'application' or a 'library' chart.
 #
