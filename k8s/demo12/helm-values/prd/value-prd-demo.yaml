@@ -1,0 +1,18 @@
+name: demo-prd
+
+replicaCount: 1
+
+image:
+  repository: docker.io/ops2dev/demo11
+  tag: "1.0"
+
+containerPort: 80
+
+envVarName: demo-prd
+
+state: prd
+color: green
+
+service:
+  port: 80
+  nodePort: 30082
