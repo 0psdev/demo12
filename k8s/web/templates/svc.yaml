@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "demo12.fullname" . }}-service
+  labels:
+    {{- include "demo12.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+      {{- if eq .Values.service.type "NodePort" }}
+      nodePort: {{ .Values.service.nodePort | default nil }}
+      {{- end }}
+  selector:
+    {{- include "demo12.selectorLabels" . | nindent 4 }}

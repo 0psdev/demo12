@@ -1,0 +1,16 @@
+replicaCount: 2
+
+image:
+  repository: myregistry/demo12
+  tag: "1.0.0"
+
+containerPort: 8080
+
+envVarName: "MY_ENV_VALUE"
+state: "enabled"
+color: "blue"
+
+service:
+  type: NodePort
+  port: 8080
+  nodePort: 30080

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "demo12.fullname" . }}-deployment
+  labels:
+    {{- include "demo12.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "demo12.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "demo12.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          ports:
+            - name: http
+              containerPort: {{ .Values.containerPort }}
+          env:
+            - name: ENV_VAR_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "demo12.fullname" . }}-config
+                  key: envVarName
+            - name: STATE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "demo12.fullname" . }}-config
+                  key: state
+            - name: COLOR
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "demo12.fullname" . }}-config
+                  key: color
