@@ -1,4 +1,4 @@
-replicaCount: 3
+replicaCount: 2
 
 image:
   repository: ops2dev/demo11
@@ -6,11 +6,11 @@ image:
 
 containerPort: 80
 
-envVarName: "dev-env"
-state: "dev"
-color: "blue"
+envVarName: "uat-env"
+state: "uat"
+color: "yellow"
 
 service:
   type: NodePort
   port: 80
-  nodePort: 30080
+  nodePort: 30081
